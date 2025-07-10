@@ -1,0 +1,155 @@
+/* Base Styling */
+body { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Arial', sans-serif; 
+    text-align: center; 
+    padding: 50px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.sentence { 
+    font-size: 24px; 
+    margin: 30px 0; 
+    color: #4CAF50;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+button { 
+    font-size: 20px; 
+    padding: 15px 30px; 
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white; 
+    border: none; 
+    border-radius: 25px; 
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+}
+
+/* 3D Dice Styling */
+.dice-container {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin: 50px 0;
+    position: relative;
+}
+
+.dice-container::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.3), transparent);
+    bottom: -10px;
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.dice {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    transform-style: preserve-3d;
+    transform: rotateX(-15deg) rotateY(15deg);
+    transition: transform 0.8s cubic-bezier(0.42, 1.57, 0.62, 0.86);
+}
+
+.dice-face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Position each face of the cube */
+.front  { transform: rotateY(0deg) translateZ(50px); }
+.back   { transform: rotateY(180deg) translateZ(50px); }
+.right  { transform: rotateY(90deg) translateZ(50px); }
+.left   { transform: rotateY(-90deg) translateZ(50px); }
+.top    { transform: rotateX(90deg) translateZ(50px); }
+.bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+/* Dice dots */
+.dot {
+    width: 16px;
+    height: 16px;
+    background: #333;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+/* Specific dot arrangements for each face */
+.front .dot:nth-child(1) { margin: auto; }
+
+.right .dot:nth-child(1) { align-self: flex-start; margin-left: auto; }
+.right .dot:nth-child(2) { align-self: flex-end; margin-right: auto; }
+
+.left .dot:nth-child(1) { align-self: flex-start; margin-left: auto; }
+.left .dot:nth-child(2) { margin: auto; }
+.left .dot:nth-child(3) { align-self: flex-end; margin-right: auto; }
+
+.top .dot:nth-child(1) { align-self: flex-start; margin-left: auto; }
+.top .dot:nth-child(2) { align-self: flex-start; margin-right: auto; }
+.top .dot:nth-child(3) { align-self: flex-end; margin-left: auto; }
+.top .dot:nth-child(4) { align-self: flex-end; margin-right: auto; }
+
+.bottom .dot:nth-child(1) { align-self: flex-start; margin-left: auto; }
+.bottom .dot:nth-child(2) { align-self: flex-start; margin-right: auto; }
+.bottom .dot:nth-child(3) { margin: auto; }
+.bottom .dot:nth-child(4) { align-self: flex-end; margin-left: auto; }
+.bottom .dot:nth-child(5) { align-self: flex-end; margin-right: auto; }
+
+.back .dot:nth-child(1) { align-self: flex-start; margin-left: auto; }
+.back .dot:nth-child(2) { align-self: flex-start; margin-right: auto; }
+.back .dot:nth-child(3) { align-self: center; margin-left: auto; }
+.back .dot:nth-child(4) { align-self: center; margin-right: auto; }
+.back .dot:nth-child(5) { align-self: flex-end; margin-left: auto; }
+.back .dot:nth-child(6) { align-self: flex-end; margin-right: auto; }
+
+/* Rolling animation */
+.dice.rolling {
+    animation: roll 1s ease-out;
+}
+
+@keyframes roll {
+    0% { transform: rotateX(-15deg) rotateY(15deg); }
+    25% { transform: rotateX(185deg) rotateY(195deg); }
+    50% { transform: rotateX(365deg) rotateY(375deg); }
+    75% { transform: rotateX(545deg) rotateY(555deg); }
+    100% { transform: rotateX(720deg) rotateY(720deg); }
+}

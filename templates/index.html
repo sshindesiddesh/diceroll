@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Lucky Dice Roller</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 3D Lucky Dice Roller</h1>
+        
+        <div class="dice-container">
+            <div class="dice" id="dice-cube">
+                <div class="dice-face front">
+                    <div class="dot"></div>
+                </div>
+                <div class="dice-face back">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="dice-face right">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="dice-face left">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="dice-face top">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="dice-face bottom">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sentence" id="sentence">Click the button to roll your luck!</div>
+        <button onclick="rollDice()">🎲 Roll the 3D Dice</button>
+        
+        <audio id="dice-sound" preload="auto">
+            <source src="{{ url_for('static', filename='audio/dice-roll.mp3') }}" type="audio/mpeg">
+        </audio>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dice.js') }}"></script>
+</body>
+</html>
