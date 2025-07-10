@@ -26,5 +26,5 @@ def roll():
     sentence = generate_positive_sentence()
     return jsonify({'dice': dice_value, 'sentence': sentence})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
